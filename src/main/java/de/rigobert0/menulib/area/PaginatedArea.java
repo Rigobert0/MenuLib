@@ -11,6 +11,7 @@ public class PaginatedArea extends NodeArea {
 	}
 
 
+
 	@Override
 	protected boolean canAdd(Pos2D pos2D, Area child) {
 		return false;

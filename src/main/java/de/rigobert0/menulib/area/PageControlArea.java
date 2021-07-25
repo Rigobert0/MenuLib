@@ -36,11 +36,11 @@ public class PageControlArea extends NodeArea {
 				.manipulate();
 	}
 
-	protected MenuComponent<?> nextButton() {
+	public MenuComponent<?> nextPageButton() {
 		return MenuComponent.createButton(nextButtonStack(), (ClickEventAction) this::nextPage);
 	}
 
-	protected MenuComponent<?> prevPageButton() {
+	public MenuComponent<?> prevPageButton() {
 		return MenuComponent.createButton(prevButtonStack(), (ClickEventAction) this::prevPage);
 	}
 

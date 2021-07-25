@@ -6,6 +6,8 @@ import de.rigobert0.menulib.menu.Constants;
 
 public record Pos2D(int xPos, int yPos) {
 
+	private static final int ROW_LENGTH = Constants.ROW_LENGTH.value();
+
 	public static final Pos2D ZERO = new Pos2D(0, 0);
 
 	public Pos2D add(Pos2D other) {
@@ -24,6 +26,10 @@ public record Pos2D(int xPos, int yPos) {
 
 	public int toInventoryPosition() {
 		return yPos * Constants.ROW_LENGTH.value() + xPos;
+	}
+
+	public static Pos2D of(int menuIndex) {
+		return new Pos2D(menuIndex % ROW_LENGTH, menuIndex / ROW_LENGTH);
 	}
 
 }

@@ -41,7 +41,9 @@ public class NodeArea extends Area {
 	 * @param child The child to be added
 	 * @return true if the child could be added successfully, false otherwise
 	 */
-	protected boolean addChild(Pos2D pos2D, Area child) {
+	public boolean setChild(Pos2D pos2D, Area child) {
+		if (children.containsKey(pos2D))
+			children.put(pos2D, child);
 		if (canAdd(pos2D, child)) {
 			children.put(pos2D, child);
 			return true;

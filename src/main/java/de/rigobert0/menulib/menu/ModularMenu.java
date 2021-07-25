@@ -4,6 +4,7 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
 import de.rigobert0.menulib.area.Area;
+import de.rigobert0.menulib.area.Pos2D;
 import de.rigobert0.menulib.area.RootArea;
 import de.rigobert0.menulib.menu.menucomponent.MenuComponent;
 
@@ -35,6 +36,10 @@ public abstract class ModularMenu extends Menu {
 
 	@Override
 	protected MenuComponent<?> get(final int index) {
-		return null;
+		return rootArea.get(index);
+	}
+
+	protected void addArea(Pos2D pos2D, Area area) {
+		rootArea.setChild(pos2D, area);
 	}
 }
