@@ -1,11 +1,8 @@
 package de.rigobert0.menulib.plugin;
 
-import java.util.Optional;
-
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.rigobert0.menulib.listeners.InventoryClickListener;
-import de.rigobert0.menulib.testimpl.shopexample.OpenCommand;
 
 public class MenuLibPlugin extends JavaPlugin {
 
@@ -19,7 +16,6 @@ public class MenuLibPlugin extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		getServer().getPluginManager().registerEvents(InventoryClickListener.INSTANCE, this);
-		Optional.ofNullable(getCommand("openmenu")).ifPresent(c -> c.setExecutor(new OpenCommand()));
 	}
 
 	public static MenuLibPlugin getInstance() {
