@@ -1,0 +1,8 @@
+name: MenuLib
+main: de.rigobert0.menulib.plugin.MenuLibPlugin
+version: 1.0
+api-version: 1.17
+commands:
+  openmenu:
+    usage: /<command>
+    description: Opens a menu for test purpose
