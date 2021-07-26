@@ -1,7 +1,7 @@
 # MenuLib
 Library for creating interactive inventory menus in minecraft spigot plugins
 
-WIP
+WIP - do not use the Area-based components!!!
 
 Current steps if you want to already use it:
 
