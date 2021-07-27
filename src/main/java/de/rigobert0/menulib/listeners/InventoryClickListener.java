@@ -5,7 +5,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 import de.rigobert0.menulib.menu.MenuLibInventoryHolder;
-import de.rigobert0.menulib.menu.PersistentDataHandler;
+import de.rigobert0.menulib.util.PersistentDataHandler;
 
 /**
  * Singleton {@link Listener} for {@link InventoryClickEvent}s

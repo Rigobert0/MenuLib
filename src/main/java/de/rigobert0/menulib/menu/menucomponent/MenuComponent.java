@@ -6,10 +6,10 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
 import de.rigobert0.menulib.area.MenuComponentArea;
-import de.rigobert0.menulib.menu.ClickEventAction;
-import de.rigobert0.menulib.menu.ClickEventHandler;
-import de.rigobert0.menulib.menu.DataProcessor;
 import de.rigobert0.menulib.menu.ItemRenderer;
+import de.rigobert0.menulib.menu.clickhandler.ClickEventAction;
+import de.rigobert0.menulib.menu.clickhandler.ClickEventHandler;
+import de.rigobert0.menulib.menu.clickhandler.DataProcessor;
 import de.rigobert0.menulib.util.ItemStackManipulator;
 
 /**

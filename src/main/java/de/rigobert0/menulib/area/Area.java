@@ -3,6 +3,7 @@ package de.rigobert0.menulib.area;
 import java.util.Map;
 
 import de.rigobert0.menulib.menu.menucomponent.MenuComponent;
+import de.rigobert0.menulib.util.Constants;
 
 /**
  * Represents a collection of inventory slots.
@@ -12,6 +13,8 @@ import de.rigobert0.menulib.menu.menucomponent.MenuComponent;
  * @see LeafArea
  */
 public abstract class Area {
+
+	protected static final int ROW_LENGTH = Constants.ROW_LENGTH.value();
 
 	protected Area() {
 	}

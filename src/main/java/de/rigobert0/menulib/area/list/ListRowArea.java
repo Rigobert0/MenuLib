@@ -1,21 +1,21 @@
-package de.rigobert0.menulib.area.paginated;
+package de.rigobert0.menulib.area.list;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 
+import de.rigobert0.menulib.area.ContentArea;
 import de.rigobert0.menulib.area.ControlArea;
 import de.rigobert0.menulib.area.ControlContentWrappingArea;
 import de.rigobert0.menulib.area.Pos2D;
 import de.rigobert0.menulib.menu.clickhandler.ClickEventAction;
 import de.rigobert0.menulib.menu.menucomponent.MenuComponent;
 
-public class PaginatedArea extends ControlContentWrappingArea {
+public class ListRowArea extends ControlContentWrappingArea {
 
-
-	private PaginatedArea(final Pos2D contentPos, final PageContentArea contentArea,
-						  final Pos2D controllingAreaPos, final ControlArea controllingArea) {
+	private ListRowArea(final Pos2D contentPos, final ContentArea contentArea,
+						final Pos2D controllingAreaPos, final ControlArea controllingArea) {
 		super(contentPos, contentArea, controllingAreaPos, controllingArea);
 	}
 
@@ -25,6 +25,7 @@ public class PaginatedArea extends ControlContentWrappingArea {
 		private Pos2D controlPos;
 		private ClickEventAction callback;
 		private List<Pos2D> contentPositions;
+		private int stepSize = 1;
 		private List<MenuComponent<?>> componentList;
 
 		public Builder contentPos(Pos2D contentPos) {
@@ -47,29 +48,31 @@ public class PaginatedArea extends ControlContentWrappingArea {
 			return this;
 		}
 
+		public Builder stepSize(int stepSize) {
+			this.stepSize = stepSize;
+			return this;
+		}
+
 		public Builder componentList(List<MenuComponent<?>> componentList) {
 			this.componentList = componentList;
 			return this;
 		}
 
-		private boolean validate() {
-			return Stream.of(contentPos, controlPos, callback, contentPositions).allMatch(Objects::nonNull);
+		private void validate() throws IllegalStateException {
+			assert Stream.of(contentPos, controlPos, callback, contentPositions).allMatch(Objects::nonNull) :
+					"There are unassigned fields left. Only componentList and step size may be left unassigned";
 		}
 
-		public PaginatedArea build() {
-			if (!validate()) {
-				throw new IllegalStateException("There are unassigned fields left. " +
-												"Only componentList may be left unassigned");
-			}
+		public ListRowArea build() {
+			validate();
 			if (componentList == null)
 				componentList = new ArrayList<>();
-			PageContentArea contentArea = new PageContentArea(componentList, contentPositions);
-			ControlArea controlArea = new PageControlArea(callback);
+			ListContentArea contentArea = new ListContentArea(componentList, contentPositions, stepSize);
+			ControlArea controlArea = new ListControlArea(callback);
 			controlArea.setContentArea(contentArea);
 
-			return new PaginatedArea(contentPos, contentArea, controlPos, controlArea);
+			return new ListRowArea(contentPos, contentArea, controlPos, controlArea);
 		}
 
 	}
-
 }

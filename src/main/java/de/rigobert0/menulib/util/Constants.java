@@ -1,4 +1,4 @@
-package de.rigobert0.menulib.menu;
+package de.rigobert0.menulib.util;
 
 public enum Constants {
 	ROW_LENGTH(9);

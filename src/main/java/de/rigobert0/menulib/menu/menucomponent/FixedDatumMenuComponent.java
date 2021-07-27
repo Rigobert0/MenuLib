@@ -4,8 +4,8 @@ package de.rigobert0.menulib.menu.menucomponent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-import de.rigobert0.menulib.menu.DataProcessor;
 import de.rigobert0.menulib.menu.ItemRenderer;
+import de.rigobert0.menulib.menu.clickhandler.DataProcessor;
 
 /**
  * MenuComponent implementation for a fixed datum of the given type.

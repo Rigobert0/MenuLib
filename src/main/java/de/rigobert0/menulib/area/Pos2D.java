@@ -2,7 +2,7 @@ package de.rigobert0.menulib.area;
 
 import java.util.Comparator;
 
-import de.rigobert0.menulib.menu.Constants;
+import de.rigobert0.menulib.util.Constants;
 
 public record Pos2D(int xPos, int yPos) {
 

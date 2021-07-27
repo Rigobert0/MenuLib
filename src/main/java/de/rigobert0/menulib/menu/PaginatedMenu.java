@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import de.rigobert0.menulib.menu.clickhandler.ClickEventAction;
 import de.rigobert0.menulib.menu.menucomponent.MenuComponent;
 import de.rigobert0.menulib.util.ItemStackManipulator;
 

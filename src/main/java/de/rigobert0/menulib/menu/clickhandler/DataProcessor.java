@@ -1,4 +1,4 @@
-package de.rigobert0.menulib.menu;
+package de.rigobert0.menulib.menu.clickhandler;
 
 import org.bukkit.event.inventory.InventoryClickEvent;
 

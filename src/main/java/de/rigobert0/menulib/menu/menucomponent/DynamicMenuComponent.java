@@ -5,8 +5,8 @@ import java.util.function.Supplier;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-import de.rigobert0.menulib.menu.DataProcessor;
 import de.rigobert0.menulib.menu.ItemRenderer;
+import de.rigobert0.menulib.menu.clickhandler.DataProcessor;
 
 /**
  * Dynamic implementation of a MenuComponent.
@@ -17,6 +17,7 @@ import de.rigobert0.menulib.menu.ItemRenderer;
 record DynamicMenuComponent<T>(Supplier<T> dataSupplier, ItemRenderer<T> itemRenderer,
 							   DataProcessor<T> dataProcessor)
 		implements MenuComponent<T> {
+
 	/**
 	 * Empty MenuComponent to fill out slots. Not needed anymore
 	 */
@@ -24,12 +25,19 @@ record DynamicMenuComponent<T>(Supplier<T> dataSupplier, ItemRenderer<T> itemRen
 	private static final DynamicMenuComponent<?> empty = new DynamicMenuComponent<>(() -> null, o -> null, (e, c) -> {
 	});
 
+	/**
+	 * Supplier of empty menuComponents
+	 *
+	 * @param <T> The type the empty MenuComponent will have
+	 * @return The empty MenuComponent
+	 */
 	@Deprecated
 	public static <T> DynamicMenuComponent<T> empty() {
 		@SuppressWarnings("unchecked")
 		DynamicMenuComponent<T> t = (DynamicMenuComponent<T>) empty;
 		return t;
 	}
+
 	@Override
 	public ItemStack getStack() {
 		return itemRenderer.render(dataSupplier.get());
@@ -39,13 +47,6 @@ record DynamicMenuComponent<T>(Supplier<T> dataSupplier, ItemRenderer<T> itemRen
 	public void handleClick(InventoryClickEvent event) {
 		dataProcessor.process(event, getData());
 	}
-
-	/**
-	 * Supplier of empty menuComponents
-	 *
-	 * @param <T> The type the empty MenuComponent will have
-	 * @return The empty MenuComponent
-	 */
 
 
 	@Override

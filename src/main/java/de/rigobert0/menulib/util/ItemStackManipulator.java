@@ -10,8 +10,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
-import de.rigobert0.menulib.menu.PersistentDataHandler;
-
 public class ItemStackManipulator {
 
 	private final ItemStack itemStack;

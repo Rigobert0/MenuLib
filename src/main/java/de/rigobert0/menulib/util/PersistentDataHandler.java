@@ -1,4 +1,4 @@
-package de.rigobert0.menulib.menu;
+package de.rigobert0.menulib.util;
 
 import java.util.Optional;
 

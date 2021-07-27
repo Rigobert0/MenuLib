@@ -3,7 +3,7 @@ package de.rigobert0.menulib.menu.menucomponent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-import de.rigobert0.menulib.menu.ClickEventHandler;
+import de.rigobert0.menulib.menu.clickhandler.ClickEventHandler;
 
 /**
  * MenuComponent that has a fixed ItemStack and is capable of handling {@link InventoryClickEvent}s

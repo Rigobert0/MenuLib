@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import de.rigobert0.menulib.area.Area;
+import de.rigobert0.menulib.area.ContentArea;
 import de.rigobert0.menulib.area.Pos2D;
 import de.rigobert0.menulib.menu.menucomponent.MenuComponent;
 
@@ -15,16 +15,12 @@ import de.rigobert0.menulib.menu.menucomponent.MenuComponent;
  * Fills out its {@link #coverArea} in the order of the {@link #componentList} and continues on the next page.
  * Automatically calculates the last page and does not go further.
  */
-public class PageContentArea extends Area {
+public class PageContentArea extends ContentArea {
 
-	private final List<MenuComponent<?>> componentList;
-	private final List<Pos2D> coverArea;
-
-	private int page;
+	private int page = 0;
 
 	public PageContentArea(final List<MenuComponent<?>> componentList, final List<Pos2D> coverArea) {
-		this.componentList = componentList;
-		this.coverArea = coverArea;
+		super(componentList, coverArea);
 	}
 
 	@Override
@@ -36,25 +32,19 @@ public class PageContentArea extends Area {
 				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 	}
 
-	private Pos2D getCoverPos(int index) {
-		return index < coverArea.size() ? coverArea.get(index) : null;
-	}
-
-	private MenuComponent<?> getComponent(int index) {
-		return index < componentList.size() ? componentList.get(index) : null;
-	}
-
 	private int getInCurrentPage(int index) {
 		return page * coverArea.size() + index;
 	}
 
-	public void nextPage() {
+	@Override
+	public void nextContent() {
 		if ((page + 1) * coverArea.size() < componentList.size()) {
 			page++;
 		}
 	}
 
-	public void prevPage() {
+	@Override
+	public void prevContent() {
 		if (page > 0) {
 			page--;
 		}

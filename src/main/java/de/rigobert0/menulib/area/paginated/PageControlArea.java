@@ -3,30 +3,17 @@ package de.rigobert0.menulib.area.paginated;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import de.rigobert0.menulib.area.NodeArea;
-import de.rigobert0.menulib.menu.ClickEventAction;
-import de.rigobert0.menulib.menu.menucomponent.MenuComponent;
+import de.rigobert0.menulib.area.ControlArea;
+import de.rigobert0.menulib.menu.clickhandler.ClickEventAction;
 import de.rigobert0.menulib.util.ItemStackManipulator;
 
-public class PageControlArea extends NodeArea {
-
-	private final ClickEventAction reload;
-	private PageContentArea contentArea;
+public class PageControlArea extends ControlArea {
 
 	public PageControlArea(final ClickEventAction reload) {
-		this.reload = reload;
+		super(reload);
 	}
 
-	protected void nextPage() {
-		contentArea.nextPage();
-		reload.run();
-	}
-
-	protected void prevPage() {
-		contentArea.prevPage();
-		reload.run();
-	}
-
+	@Override
 	protected ItemStack nextButtonStack() {
 		return new ItemStackManipulator(Material.GRAY_STAINED_GLASS_PANE)
 				.name("Next Page")
@@ -34,22 +21,13 @@ public class PageControlArea extends NodeArea {
 				.manipulate();
 	}
 
+	@Override
 	protected ItemStack prevButtonStack() {
 		return new ItemStackManipulator(Material.GRAY_STAINED_GLASS_PANE)
-				.name("Previous Page")
+				.name("Previous page")
 				.unmodifiable()
 				.manipulate();
 	}
 
-	public MenuComponent<?> nextPageButton() {
-		return MenuComponent.createButton(nextButtonStack(), (ClickEventAction) this::nextPage);
-	}
 
-	public MenuComponent<?> prevPageButton() {
-		return MenuComponent.createButton(prevButtonStack(), (ClickEventAction) this::prevPage);
-	}
-
-	public void setContentArea(final PageContentArea contentArea) {
-		this.contentArea = contentArea;
-	}
 }

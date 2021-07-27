@@ -11,6 +11,7 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
 import de.rigobert0.menulib.menu.menucomponent.MenuComponent;
+import de.rigobert0.menulib.util.Constants;
 
 /**
  * Base class for all menus
