@@ -4,8 +4,8 @@ import java.util.Optional;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import de.rigobert0.menulib.demoimpl.shopexample.OpenCommand;
 import de.rigobert0.menulib.listeners.InventoryClickListener;
-import de.rigobert0.menulib.testimpl.shopexample.OpenCommand;
 
 public class MenuLibPlugin extends JavaPlugin {
 

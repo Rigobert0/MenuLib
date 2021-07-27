@@ -1,3 +1,3 @@
 # Project exclude paths
 /target/
-/src/main/java/de/rigobert0/menulib/testimpl
+/src/main/java/de/rigobert0/menulib/demoimpl/util/debug

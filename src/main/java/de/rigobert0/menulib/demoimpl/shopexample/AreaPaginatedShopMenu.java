@@ -1,4 +1,4 @@
-package de.rigobert0.menulib.testimpl.shopexample;
+package de.rigobert0.menulib.demoimpl.shopexample;
 
 import java.util.ArrayList;
 import java.util.List;
