@@ -18,7 +18,7 @@ import de.rigobert0.menulib.menu.menucomponent.MenuComponent;
 public abstract class PaginatedAreaMenu extends Menu {
 
 	private final RootArea rootArea;
-	private final PageControlArea controlArea = new PageControlArea();
+	private final PageControlArea controlArea;
 	private final PageContentArea contentArea;
 
 	/**
@@ -31,6 +31,7 @@ public abstract class PaginatedAreaMenu extends Menu {
 	protected PaginatedAreaMenu(final int size, final String title) {
 		super(size, title);
 		rootArea = new RootArea();
+		controlArea = new PageControlArea(this::reload);
 		int space = size - ROW_LENGTH;
 		List<Pos2D> positions = IntStream.range(0, space).mapToObj(Pos2D::of).collect(Collectors.toList());
 		contentArea = new PageContentArea(new ArrayList<>(), positions);

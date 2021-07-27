@@ -9,17 +9,21 @@ import de.rigobert0.menulib.util.ItemStackManipulator;
 
 public class PageControlArea extends NodeArea {
 
+	private final ClickEventAction reload;
 	private PageContentArea contentArea;
 
-	public PageControlArea() {
+	public PageControlArea(final ClickEventAction reload) {
+		this.reload = reload;
 	}
 
 	protected void nextPage() {
 		contentArea.nextPage();
+		reload.run();
 	}
 
 	protected void prevPage() {
 		contentArea.prevPage();
+		reload.run();
 	}
 
 	protected ItemStack nextButtonStack() {
