@@ -19,7 +19,7 @@ public abstract class PaginatedAreaMenu extends Menu {
 
 	private final RootArea rootArea;
 	private final PageControlArea controlArea = new PageControlArea();
-	private final List<MenuComponent<?>> componentList = new ArrayList<>();
+	private final PageContentArea contentArea;
 
 	/**
 	 * Creates a menu with the given size and title.
@@ -31,12 +31,13 @@ public abstract class PaginatedAreaMenu extends Menu {
 	protected PaginatedAreaMenu(final int size, final String title) {
 		super(size, title);
 		rootArea = new RootArea();
-		setup(size - ROW_LENGTH);
+		int space = size - ROW_LENGTH;
+		List<Pos2D> positions = IntStream.range(0, space).mapToObj(Pos2D::of).collect(Collectors.toList());
+		contentArea = new PageContentArea(new ArrayList<>(), positions);
+		setup(space);
 	}
 
 	private void setup(int space) {
-		List<Pos2D> positions = IntStream.range(0, space).mapToObj(Pos2D::of).collect(Collectors.toList());
-		PageContentArea contentArea = new PageContentArea(componentList, positions);
 		addToControlArea(0, controlArea.prevPageButton());
 		addToControlArea(ROW_LENGTH - 1, controlArea.nextPageButton());
 		PaginatedArea paginatedArea = new PaginatedArea(Pos2D.ZERO, contentArea,
@@ -56,7 +57,7 @@ public abstract class PaginatedAreaMenu extends Menu {
 	}
 
 	protected void addComponent(MenuComponent<?> component) {
-		componentList.add(component);
+		contentArea.addComponent(component);
 	}
 
 	public void addToControlArea(int pos, MenuComponent<?> component) {

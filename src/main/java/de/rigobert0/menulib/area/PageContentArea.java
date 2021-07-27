@@ -2,6 +2,7 @@ package de.rigobert0.menulib.area;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -28,7 +29,17 @@ public class PageContentArea extends Area {
 	public Map<Pos2D, MenuComponent<?>> build(final Pos2D pos2D) {
 		return IntStream.range(0, coverArea.size())
 				.boxed()
-				.collect(Collectors.toMap(coverArea::get, i -> componentList.get(getInCurrentPage(i))));
+				.map(this::mapComponent)
+				.filter(Objects::nonNull)
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+	}
+
+	private Pos2D getCoverPos(int index) {
+		return index < coverArea.size() ? coverArea.get(index) : null;
+	}
+
+	private MenuComponent<?> getComponent(int index) {
+		return index < componentList.size() ? componentList.get(index) : null;
 	}
 
 	private int getInCurrentPage(int index) {
@@ -47,5 +58,16 @@ public class PageContentArea extends Area {
 		}
 	}
 
+	private Map.Entry<Pos2D, MenuComponent<?>> mapComponent(int i) {
+		Pos2D pos2D = getCoverPos(i);
+		MenuComponent<?> component = getComponent(getInCurrentPage(i));
+		if (pos2D == null || component == null)
+			return null;
+		return Map.entry(pos2D, component);
+	}
+
+	public void addComponent(MenuComponent<?> component) {
+		componentList.add(component);
+	}
 
 }
