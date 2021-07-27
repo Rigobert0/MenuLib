@@ -1,8 +1,9 @@
-package de.rigobert0.menulib.area;
+package de.rigobert0.menulib.area.paginated;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import de.rigobert0.menulib.area.NodeArea;
 import de.rigobert0.menulib.menu.ClickEventAction;
 import de.rigobert0.menulib.menu.menucomponent.MenuComponent;
 import de.rigobert0.menulib.util.ItemStackManipulator;

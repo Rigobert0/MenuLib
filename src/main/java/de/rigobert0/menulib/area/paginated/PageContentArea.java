@@ -1,4 +1,4 @@
-package de.rigobert0.menulib.area;
+package de.rigobert0.menulib.area.paginated;
 
 import java.util.List;
 import java.util.Map;
@@ -6,6 +6,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import de.rigobert0.menulib.area.Area;
+import de.rigobert0.menulib.area.Pos2D;
 import de.rigobert0.menulib.menu.menucomponent.MenuComponent;
 
 /**
